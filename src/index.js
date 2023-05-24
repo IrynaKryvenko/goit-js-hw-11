@@ -5,13 +5,13 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { renderPhotosList } from './js/renderPhotosList';
 
-const submitForm = document.querySelector('.search-form');
-const galleryList = document.querySelector('.gallery');
-const loadMoreBtn = document.querySelector('.load-more');
-
 const API_KEY = '36655990-0724db180fb71d9be8c2c1bf3';
 const BASE_URL = 'https://pixabay.com/api/?key=';
 const OPTIONS = '}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40';
+
+const submitForm = document.querySelector('.search-form');
+const galleryList = document.querySelector('.gallery');
+const loadMoreBtn = document.querySelector('.load-more');
 
 let page = 1;
 let searchQuery = '';
@@ -32,8 +32,8 @@ function onSearch(event) {
   if (searchQuery !== '') {
     page = 1;
     onLoadPhotos();
-  }
-}
+  };
+};
 
 function onLoadPhotos() {
   loadMoreBtn.style.display = 'none';
@@ -52,7 +52,7 @@ function onLoadPhotos() {
       );
     });
   page += 1;
-}
+};
 
 function forScrollPage() {
   const { height: cardHeight } = document
@@ -63,7 +63,7 @@ function forScrollPage() {
     top: cardHeight * 2,
     behavior: 'smooth',
   });
-}
+};
 
 async function getPhotos(name) {
   try {
@@ -82,5 +82,5 @@ async function getPhotos(name) {
       'Sorry, there are no images matching your search query. Please try again.'
     );
     throw error;
-  }
-}
+  } 
+};
