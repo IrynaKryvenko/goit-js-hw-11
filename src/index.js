@@ -9,7 +9,7 @@ const submitForm = document.querySelector('.search-form');
 const galleryList = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 
-const API_KEY = '26837460-553b8b6dbfe9a53b3dd0b8a3a';
+const API_KEY = '36655990-0724db180fb71d9be8c2c1bf3';
 const BASE_URL = 'https://pixabay.com/api/?key=';
 const OPTIONS = '}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40';
 
