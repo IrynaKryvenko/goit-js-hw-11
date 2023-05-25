@@ -40,7 +40,7 @@ function onLoadPhotos() {
   getPhotos(searchQuery)
     .then((array) => {
       renderPhotosList(array.hits, galleryList, gallery);
-      loadMoreBtn.hide();
+      loadMoreBtn.style.display = 'block';
       forScrollPage();
       if (page === 2) {
         Notify.success(`Hooray! We found ${array.totalHits} images.`);
@@ -74,7 +74,7 @@ async function getPhotos(name) {
     const totalHits = response.data.totalHits;
     if (total >= totalHits) {
       Notify.warning('We`re sorry, but you`ve reached the end of search results.');
-      loadMoreBtn.hide();
+      loadMoreBtn.style.display = 'none';
     }
     return response.data;
   } catch (error) {
