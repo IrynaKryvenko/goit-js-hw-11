@@ -16,7 +16,6 @@ const loadMoreBtn = document.querySelector('.load-more');
 let page = 1;
 let searchQuery = '';
 loadMoreBtn.style.setProperty('display', 'none', 'important');
-loadMoreBtn.style.display = 'none';
 let total = 0;
 
 submitForm.addEventListener('submit', onSearch);
@@ -46,10 +45,8 @@ function onLoadPhotos() {
 
       if (total === 0) {
         Notify.warning('Sorry, there are no images matching your search query.');
-      } else if (total >= totalHits) {
-        Notify.warning('You have reached the end of the search results.');
       } else {
-        loadMoreBtn.style.removeProperty('display'); // Удаление принудительного стиля
+        loadMoreBtn.style.removeProperty('display'); 
         forScrollPage();
         if (page === 2) {
           Notify.success(`Hooray! We found ${totalHits} images.`);
@@ -84,7 +81,7 @@ async function getPhotos(name) {
     const totalHits = response.data.totalHits;
     if (total >= totalHits) {
       Notify.warning('We`re sorry, but you`ve reached the end of search results.');
-      loadMoreBtn.style.display = 'none';
+      loadMoreBtn.style.setProperty('display', 'none', 'important');
     }
     return response.data;
   } catch (error) {
