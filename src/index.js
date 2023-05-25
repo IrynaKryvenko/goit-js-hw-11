@@ -15,7 +15,8 @@ const loadMoreBtn = document.querySelector('.load-more');
 
 let page = 1;
 let searchQuery = '';
-loadMoreBtn.style.display = 'none';
+loadMoreBtn.hide();
+loadMoreBtn.disable();
 let total = 0;
 
 submitForm.addEventListener('submit', onSearch);
