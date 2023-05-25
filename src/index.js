@@ -15,7 +15,7 @@ const loadMoreBtn = document.querySelector('.load-more');
 
 let page = 1;
 let searchQuery = '';
-loadMoreBtn.hide();
+loadMoreBtn.style.display = 'none';
 let total = 0;
 
 submitForm.addEventListener('submit', onSearch);
@@ -74,7 +74,7 @@ async function getPhotos(name) {
     const totalHits = response.data.totalHits;
     if (total >= totalHits) {
       Notify.warning('We`re sorry, but you`ve reached the end of search results.');
-      loadMoreBtn.hide();
+      loadMoreBtn.style.display = 'none';
     }
     return response.data;
   } catch (error) {
