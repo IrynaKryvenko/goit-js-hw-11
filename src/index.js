@@ -15,6 +15,7 @@ const loadMoreBtn = document.querySelector('.load-more');
 
 let page = 1;
 let searchQuery = '';
+loadMoreBtn.style.setProperty('display', 'none', 'important');
 loadMoreBtn.style.display = 'none';
 let total = 0;
 
