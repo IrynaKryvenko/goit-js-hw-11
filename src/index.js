@@ -15,8 +15,7 @@ const loadMoreBtn = document.querySelector('.load-more');
 
 let page = 1;
 let searchQuery = '';
-loadMoreBtn.hide();
-loadMoreBtn.disable();
+loadMoreBtn.style.display = 'none';
 let total = 0;
 
 submitForm.addEventListener('submit', onSearch);
@@ -37,24 +36,32 @@ function onSearch(event) {
 };
 
 function onLoadPhotos() {
-  loadMoreBtn.hide();
-  loadMoreBtn.disable();
+  loadMoreBtn.style.setProperty('display', 'none', 'important');
   getPhotos(searchQuery)
     .then((array) => {
       renderPhotosList(array.hits, galleryList, gallery);
-      loadMoreBtn.style.display = 'block';
-      forScrollPage();
-      if (page === 2) {
-        Notify.success(`Hooray! We found ${array.totalHits} images.`);
+      total += array.hits.length;
+      const totalHits = array.totalHits;
+
+      if (total === 0) {
+        Notify.warning('Sorry, there are no images matching your search query.');
+      } else if (total >= totalHits) {
+        Notify.warning('You have reached the end of the search results.');
+      } else {
+        loadMoreBtn.style.removeProperty('display'); // Удаление принудительного стиля
+        forScrollPage();
+        if (page === 2) {
+          Notify.success(`Hooray! We found ${totalHits} images.`);
+        }
       }
     })
     .catch((error) => {
       Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
+        'Sorry, there was an error retrieving images. Please try again.'
       );
     });
   page += 1;
-};
+}
 
 function forScrollPage() {
   const { height: cardHeight } = document
