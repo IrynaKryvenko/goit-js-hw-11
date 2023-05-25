@@ -36,7 +36,8 @@ function onSearch(event) {
 };
 
 function onLoadPhotos() {
-  loadMoreBtn.style.display = 'none';
+  loadMoreBtn.hide();
+  loadMoreBtn.disable();
   getPhotos(searchQuery)
     .then((array) => {
       renderPhotosList(array.hits, galleryList, gallery);
