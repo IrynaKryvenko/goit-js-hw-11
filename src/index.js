@@ -32,6 +32,7 @@ function onSearch(event) {
   if (searchQuery !== '') {
     page = 1;
     onLoadPhotos();
+    loadMoreBtn.style.setProperty('display', 'none', 'important');
   };
 };
 
