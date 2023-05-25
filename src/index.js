@@ -45,6 +45,8 @@ function onLoadPhotos() {
 
       if (total === 0) {
         Notify.warning('Sorry, there are no images matching your search query.');
+      } else if (total >= totalHits) {
+        Notify.warning('You have reached the end of the search results.');
       } else {
         loadMoreBtn.style.removeProperty('display'); 
         forScrollPage();
